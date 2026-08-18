@@ -1,4 +1,37 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DDAS — Data Download Duplication Alert System</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css"></head><body>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DDAS — Data Download Duplication Alert System</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css?v=overlap-fix-2">
+<style>
+/* Landing hero overlap fix only. Kept inline so stale cached CSS cannot reintroduce the old absolute layout. */
+.hero-visual{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-areas:
+    "saved signal"
+    "workflow workflow"
+    ". coverage"!important;
+  grid-template-rows:max-content max-content max-content!important;
+  column-gap:18px!important;
+  row-gap:22px!important;
+  align-items:start!important;
+  align-content:start!important;
+  height:auto!important;
+  min-height:470px!important;
+}
+.hero-visual .float-card,
+.hero-visual .visual-main{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  transform:none!important;
+  margin:0!important;
+}
+.hero-visual .float-b{grid-area:saved!important;justify-self:start!important;width:205px!important;max-width:100%!important;}
+.hero-visual .float-a{grid-area:signal!important;justify-self:end!important;width:175px!important;max-width:100%!important;}
+.hero-visual .visual-main{grid-area:workflow!important;justify-self:center!important;width:calc(100% - 32px)!important;z-index:1!important;}
+.hero-visual .float-c{grid-area:coverage!important;justify-self:end!important;width:190px!important;max-width:100%!important;}
+@media(max-width:720px){
+  .hero-visual{grid-template-columns:1fr!important;grid-template-areas:"signal" "workflow" "coverage"!important;}
+  .hero-visual .float-a,.hero-visual .float-c{justify-self:center!important;}
+}
+</style></head><body>
 <div class="container public-nav-wrap"><nav class="public-nav clay"><a class="brand" href="index.html"><img class="brand-logo" src="assets/logo.svg"><div><b>DDAS</b><small>Data Download Duplication Alert System</small></div></a><div class="public-links"><a href="#features">Features</a><a href="#workflow">How it works</a><a href="analytics.html">Impact</a><a class="btn primary small" href="dashboard.html">Open demo</a></div></nav></div>
 <section class="hero"><div class="container hero-grid"><div class="hero-card clay"><span class="eyebrow clay-soft">✨ Institute-wide dataset discovery before download</span><h1>Stop duplicate downloads before they happen.</h1><p>DDAS checks institute repositories, user-owned datasets, file fingerprints, temporal coverage, spatial overlap and access rules before a fresh transfer starts. If the required data already exists, users are routed to the existing copy.</p><div class="hero-actions"><a class="btn primary" href="dashboard.html">Try interactive demo</a><a class="btn ghost" href="#features">Explore features</a></div><div class="mini-metrics"><div class="mini-metric clay-soft"><span>Duplicate downloads prevented</span><strong>829</strong></div><div class="mini-metric clay-soft"><span>Storage saved</span><strong>4.31 TB</strong></div><div class="mini-metric clay-soft"><span>Repositories indexed</span><strong>16</strong></div></div></div><div class="hero-visual clay"><div class="float-card float-a clay-soft"><span class="muted" style="font-size:10px">Live DDAS signal</span><b style="display:block;font-size:20px;margin-top:4px">98.7% match</b><span class="green-text" style="font-size:10px">Duplicate likely found</span></div><div class="float-card float-b clay-soft"><b style="font-size:12px">Saved by DDAS</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px"><div class="clay-inset" style="padding:10px;border-radius:13px"><small class="muted">Bandwidth</small><b style="display:block">3.74 TB</b></div><div class="clay-inset" style="padding:10px;border-radius:13px"><small class="muted">Reuse</small><b style="display:block">143×</b></div></div></div><div class="float-card float-c clay-soft"><b style="font-size:12px">Coverage insight</b><p class="muted" style="font-size:10px;line-height:1.4;margin:6px 0 0">Requested Maharashtra rainfall data is fully covered by an existing India dataset.</p></div><div class="visual-main clay-soft"><small class="muted">Core workflow</small><div class="flow"><div class="flow-step clay-inset">Search dataset</div><div class="flow-arrow">→</div><div class="flow-step clay-inset">DDAS checks metadata</div><div class="flow-arrow">→</div><div class="flow-step clay-inset">Reuse existing copy</div></div><div class="clay-inset" style="margin-top:15px;padding:13px;border-radius:16px"><small class="muted">Example match</small><b style="display:block;font-size:11px;margin-top:5px">“Maharashtra Rainfall 2024” → ERA5 India Hourly Rainfall — 2024</b></div></div></div></div></section>
 <section class="section" id="features"><div class="container"><div class="section-title"><h2>More than a duplicate file finder</h2><p>DDAS determines whether an existing organizational dataset can satisfy a new request using identity, metadata, temporal, spatial and semantic signals.</p></div><div class="feature-grid"><div class="feature clay"><div class="feature-icon a">🔎</div><h3>Smart duplicate detection</h3><p>Combines checksums, unique dataset IDs, source history, metadata and similarity signals.</p></div><div class="feature clay"><div class="feature-icon b">🧠</div><h3>Metadata intelligence</h3><p>Period, region, variables, resolution, owner, location, permissions, lineage and integrity.</p></div><div class="feature clay"><div class="feature-icon c">⚡</div><h3>Instant reuse</h3><p>Open the existing copy, mount it to a workspace or request owner access instead of downloading again.</p></div><div class="feature clay"><div class="feature-icon d">📦</div><h3>Repository visibility</h3><p>Indexes central servers, lab repositories and user-owned research datasets in a common catalog.</p></div><div class="feature clay"><div class="feature-icon a">🛰️</div><h3>Scientific data aware</h3><p>Designed to demonstrate climate, geospatial, satellite and ocean datasets with rich spatial-temporal metadata.</p></div><div class="feature clay"><div class="feature-icon b">📊</div><h3>Resource analytics</h3><p>Quantifies prevented downloads, bandwidth saved, storage avoided, reuse rate and departmental impact.</p></div></div></div></section>
