@@ -130,24 +130,44 @@
     },
     datasetCard(d, compact = false){
       return `<article class="dataset-card" data-id="${d.id}">
-        <div>
+        <div class="card-content-wrap">
           <div class="card-topline">
-            <span class="tag green">${d.match}% MATCH</span>
-            <span class="tag blue">${d.access.toUpperCase()}</span>
-            <span class="tag">${d.format}</span>
+            <div class="match-pill">
+              <span class="match-dot"></span>
+              <span>${d.match}% Match</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag blue">${d.access}</span>
+              <span class="tag">${(d.format || '').split('/')[0].trim()}</span>
+            </div>
           </div>
           <h3>${d.title}</h3>
           <p>${d.description}</p>
-          <div class="meta-table">
-            <div class="meta-item"><span>Coverage</span><b>${d.region} · ${d.period}</b></div>
-            <div class="meta-item"><span>Size</span><b>${d.size}</b></div>
-            <div class="meta-item"><span>Source</span><b>${d.source}</b></div>
-            <div class="meta-item"><span>Node</span><b>${d.location}</b></div>
+          <div class="meta-spec-grid">
+            <div class="spec-cell">
+              <span class="spec-label">Coverage</span>
+              <b class="spec-val" title="${d.region} · ${d.period}">${d.region} · ${d.period}</b>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label">Size</span>
+              <b class="spec-val">${d.size}</b>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label">Source</span>
+              <b class="spec-val" title="${d.source}">${d.source}</b>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label">Storage Node</span>
+              <b class="spec-val" title="${d.location}">${d.location}</b>
+            </div>
           </div>
         </div>
         <div class="card-actions">
           <a class="btn ghost small" href="dataset.html?id=${encodeURIComponent(d.id)}">Details</a>
-          <button class="btn primary small duplicate-trigger" data-id="${d.id}">Check & Download</button>
+          <button class="btn primary small duplicate-trigger" data-id="${d.id}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Check & Download</span>
+          </button>
         </div>
       </article>`;
     },
