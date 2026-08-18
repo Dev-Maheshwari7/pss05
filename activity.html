@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activity & Audit — DDAS</title>
+  <title>Activity & Audit Log — DDAS</title>
   <link rel="icon" href="assets/logo.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -36,27 +36,45 @@
         <div class="page-header">
           <div>
             <h1>Audit & Operations Log</h1>
-            <p>Every prevented duplicate transfer, access approval, and indexing event is recorded for compliance and resource attribution.</p>
+            <p>Cryptographic transaction trail tracking all intercepted duplicate transfers, access grants, index additions, and user overrides across 16 nodes.</p>
           </div>
         </div>
 
         <!-- Metric Ribbon -->
         <section class="kpi-row" id="activityMetrics"></section>
 
-        <!-- Panel with Filter Tabs -->
-        <div class="panel">
-          <div class="panel-header">
-            <h2>Live Operational Events</h2>
+        <!-- Enterprise Audit Table Card -->
+        <div class="table-card">
+          <!-- Toolbar with Filter Chips and Search -->
+          <div class="audit-toolbar">
             <div class="filter-row" id="filters">
-              <button class="filter-chip activity-filter" data-type="all">All Events</button>
-              <button class="filter-chip activity-filter" data-type="prevented">Prevented Duplicates</button>
-              <button class="filter-chip activity-filter" data-type="request">Access Requests</button>
-              <button class="filter-chip activity-filter" data-type="indexed">Newly Indexed</button>
-              <button class="filter-chip activity-filter" data-type="override">User Overrides</button>
+              <button class="filter-chip active activity-filter" data-type="all">All Events <span class="chip-count" id="countAll">8</span></button>
+              <button class="filter-chip activity-filter" data-type="prevented">Prevented Duplicates <span class="chip-count" id="countPrevented">3</span></button>
+              <button class="filter-chip activity-filter" data-type="request">Access Requests <span class="chip-count" id="countRequest">2</span></button>
+              <button class="filter-chip activity-filter" data-type="indexed">Newly Indexed <span class="chip-count" id="countIndexed">2</span></button>
+              <button class="filter-chip activity-filter" data-type="override">User Overrides <span class="chip-count" id="countOverride">1</span></button>
+            </div>
+            <div class="audit-search-wrap">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input id="auditSearch" placeholder="Filter by user, dataset, action, or node…">
             </div>
           </div>
 
-          <div class="activity-list" id="auditList" style="margin-top: 14px;"></div>
+          <!-- Structured Audit Feed Table -->
+          <div class="data-table-wrap">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Event Type</th>
+                  <th>Event Description & Action Detail</th>
+                  <th style="width: 180px;">Actor / Researcher</th>
+                  <th style="width: 150px;">Resource Impact</th>
+                  <th style="width: 110px; text-align: right;">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="auditList"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </main>
