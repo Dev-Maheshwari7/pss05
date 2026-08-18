@@ -2,9 +2,9 @@ window.addEventListener('DOMContentLoaded',()=>{
   const D = DDAS_DATA;
   const prevented = +(localStorage.getItem('ddasPrevented') || D.stats.prevented);
   document.getElementById('metricGrid').innerHTML = [
-    ddas.metric('Downloads Prevented', prevented, '↑ 14.8% vs last month'),
+    ddas.metric('Downloads Prevented', prevented, '+14.8% vs last month'),
     ddas.metric('Storage Saved', D.stats.storageTB + ' TB', 'Across 16 indexed clusters'),
-    ddas.metric('Bandwidth Saved', D.stats.bandwidthTB + ' TB', '↑ 21.2% this quarter'),
+    ddas.metric('Bandwidth Saved', D.stats.bandwidthTB + ' TB', '+21.2% this quarter'),
     ddas.metric('Indexed Datasets', D.stats.datasets.toLocaleString(), D.stats.repositories + ' active nodes')
   ].join('');
 
@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   document.getElementById('recentActivity').innerHTML = D.activities.slice(0, 4).map(a => 
     `<div class="activity-item">
-      <div class="activity-icon">${a.icon}</div>
+      <div class="activity-icon">${ddas.icon(a.icon)}</div>
       <div>
         <b>${a.title}</b>
         <p>${a.detail}</p>
@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded',()=>{
       })).sort((a, b) => b.score - a.score || b.d.match - a.d.match).map(x => x.d);
     }
     render(list);
-    document.getElementById('resultTitle').textContent = `Results for “${document.getElementById('searchInput').value || 'all datasets'}”`;
+    document.getElementById('resultTitle').textContent = `Results for "${document.getElementById('searchInput').value || 'all datasets'}"`;
     ddas.toast(`DDAS ranked ${Math.min(3, list.length)} high-confidence matches`);
   }
 

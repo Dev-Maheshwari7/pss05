@@ -2,14 +2,36 @@
   const D = window.DDAS_DATA;
   const path = location.pathname.split('/').pop() || 'index.html';
 
+  const ICONS = {
+    search: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+    repository: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>',
+    activity: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+    analytics: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>',
+    server: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>',
+    shield: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+    zap: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+    'arrow-up-right': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>',
+    'arrow-down': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>',
+    plus: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>',
+    alert: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>',
+    check: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+    cloud: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
+    satellite: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>',
+    waves: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path></svg>',
+    users: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
+  };
+
   const menuItems = [
-    { href: 'dashboard.html', label: 'Discover', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>', badge: '24' },
-    { href: 'repository.html', label: 'Repository', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>', badge: '16' },
-    { href: 'activity.html', label: 'Audit Log', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>', badge: '7', badgeClass: 'red' },
-    { href: 'analytics.html', label: 'Analytics', icon: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>', badge: '' }
+    { href: 'dashboard.html', label: 'Discover', icon: ICONS.search, badge: '24' },
+    { href: 'repository.html', label: 'Repository', icon: ICONS.repository, badge: '16' },
+    { href: 'activity.html', label: 'Audit Log', icon: ICONS.activity, badge: '7', badgeClass: 'red' },
+    { href: 'analytics.html', label: 'Analytics', icon: ICONS.analytics, badge: '' }
   ];
 
   window.ddas = {
+    icon(name){
+      return ICONS[name] || ICONS.activity;
+    },
     toast(message){
       let t = document.getElementById('globalToast');
       if(!t){
@@ -61,14 +83,14 @@
           <div class="app-menu">
             <div class="menu-link" style="cursor:default">
               <div class="menu-link-left">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                ${ICONS.server}
                 <span>Active Nodes</span>
               </div>
               <span class="menu-badge">16/16</span>
             </div>
             <div class="menu-link" style="cursor:default">
               <div class="menu-link-left">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                ${ICONS.shield}
                 <span>Integrity Guard</span>
               </div>
               <span class="tag green" style="font-size:9px;padding:1px 5px">ACTIVE</span>
@@ -181,7 +203,7 @@
       const saving = d.id === 'DDAS-CLIM-ERA5-02491' ? '8.4 GB' : d.size;
       return `<div class="dup-head">
         <div class="warning">
-          <div class="warning-icon">⚠</div>
+          <div class="warning-icon">${ICONS.alert}</div>
           <div>
             <h2>Potential Duplicate Already Available</h2>
             <p>Your requested data is fully or substantially covered by an existing institute dataset.</p>
@@ -196,15 +218,15 @@
         <div class="summary-grid">
           <div class="summary">
             <span>TEMPORAL COVERAGE</span>
-            <b>✓ ${d.startYear === d.endYear ? '100% Matching Period' : 'Overlapping Window'} · ${d.period}</b>
+            <b style="display:flex;align-items:center;gap:4px">${ICONS.check} ${d.startYear === d.endYear ? '100% Matching Period' : 'Overlapping Window'} · ${d.period}</b>
           </div>
           <div class="summary">
             <span>SPATIAL COVERAGE</span>
-            <b>✓ Requested domain satisfied by ${d.region}</b>
+            <b style="display:flex;align-items:center;gap:4px">${ICONS.check} Requested domain satisfied by ${d.region}</b>
           </div>
           <div class="summary">
             <span>ESTIMATED SAVING</span>
-            <b>✓ ${saving} external transfer avoided</b>
+            <b style="display:flex;align-items:center;gap:4px">${ICONS.check} ${saving} external transfer avoided</b>
           </div>
         </div>
         <div class="tabs">
@@ -285,7 +307,7 @@
       };
       document.getElementById('modalCopy').onclick = () => {
         navigator.clipboard?.writeText(d.accessPath).catch(() => {});
-        this.toast('Dataset mount path copied to clipboard ✓');
+        this.toast('Dataset mount path copied to clipboard');
       };
       document.getElementById('modalOverride').onclick = () => {
         document.getElementById('duplicateOverlay').classList.remove('show');
@@ -293,7 +315,7 @@
       };
       document.getElementById('modalUse').onclick = () => {
         document.getElementById('duplicateOverlay').classList.remove('show');
-        this.toast(d.access === 'Approval required' ? 'Access request sent to dataset owner ✓' : 'Existing dataset mounted to your workspace ✓');
+        this.toast(d.access === 'Approval required' ? 'Access request sent to dataset owner' : 'Existing dataset mounted to your workspace');
         const n = +(localStorage.getItem('ddasPrevented') || D.stats.prevented);
         localStorage.setItem('ddasPrevented', n + 1);
       };

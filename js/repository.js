@@ -21,7 +21,9 @@ window.addEventListener('DOMContentLoaded',()=>{
     body.innerHTML = list.map(d => `<tr>
       <td>
         <div class="dataset-title-cell">
-          <div class="dataset-icon-badge">${d.type === 'Climate' ? '☁' : d.type === 'Remote Sensing' ? '◫' : d.type === 'Oceanography' ? '≈' : '▥'}</div>
+          <div class="dataset-icon-badge">
+            ${d.type === 'Climate' ? ddas.icon('cloud') : d.type === 'Remote Sensing' ? ddas.icon('satellite') : d.type === 'Oceanography' ? ddas.icon('waves') : ddas.icon('users')}
+          </div>
           <div>
             <b>${d.title}</b>
             <span>${d.id}</span>
@@ -34,7 +36,7 @@ window.addEventListener('DOMContentLoaded',()=>{
       <td><span class="tag blue" style="font-size:10px">${d.location}</span></td>
       <td><span style="font-size:12px;font-weight:500">${d.owner}</span></td>
       <td><span class="tag ${d.access === 'Approval required' ? 'amber' : 'green'}" style="font-size:10px">${d.access}</span></td>
-      <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--brand-green)">${d.reuseCount}×</td>
+      <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--brand-green)">${d.reuseCount}x</td>
       <td><a class="btn ghost small" href="dataset.html?id=${encodeURIComponent(d.id)}">Details</a></td>
     </tr>`).join('');
   }

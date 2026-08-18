@@ -260,14 +260,14 @@ window.DDAS_DATA = {
     }
   ],
   activities: [
-    {type:"prevented", icon:"⚡", title:"Duplicate prevented · Sentinel-2 L2A Mumbai", detail:"Existing copy served from Remote Sensing Node 02", time:"2m", user:"D. Kulkarni", saved:"11.2 GB"},
-    {type:"request", icon:"↗", title:"Access requested · Arabian Sea SST 2021–25", detail:"Request routed to Ocean Sciences Lab", time:"18m", user:"M. Desai", saved:"—"},
-    {type:"indexed", icon:"＋", title:"New dataset indexed · MODIS Aerosol Daily", detail:"SHA-256 + spatial metadata extraction complete", time:"41m", user:"System", saved:"—"},
-    {type:"prevented", icon:"⚡", title:"Duplicate prevented · ERA5 Maharashtra subset", detail:"Request satisfied from ERA5 India 2024 archive", time:"1h", user:"A. Mehta", saved:"8.4 GB"},
-    {type:"override", icon:"↓", title:"Download override · Landsat 9 Pune tile", detail:"User selected different atmospheric correction requirement", time:"2h", user:"S. Jain", saved:"0 GB"},
-    {type:"indexed", icon:"＋", title:"New dataset indexed · District Groundwater Levels", detail:"Repository scan completed on Hydro Node 06", time:"3h", user:"Indexer", saved:"—"},
-    {type:"prevented", icon:"⚡", title:"Duplicate prevented · IMD District Rainfall", detail:"Existing 2024 CSV reused by Environment Lab", time:"4h", user:"P. Shah", saved:"712 MB"},
-    {type:"request", icon:"↗", title:"Access approved · High-resolution bathymetry", detail:"Owner approved research group access", time:"5h", user:"Admin", saved:"—"}
+    {type:"prevented", icon:"zap", title:"Duplicate prevented · Sentinel-2 L2A Mumbai", detail:"Existing copy served from Remote Sensing Node 02", time:"2m", user:"D. Kulkarni", saved:"11.2 GB"},
+    {type:"request", icon:"arrow-up-right", title:"Access requested · Arabian Sea SST 2021–25", detail:"Request routed to Ocean Sciences Lab", time:"18m", user:"M. Desai", saved:"—"},
+    {type:"indexed", icon:"plus", title:"New dataset indexed · MODIS Aerosol Daily", detail:"SHA-256 + spatial metadata extraction complete", time:"41m", user:"System", saved:"—"},
+    {type:"prevented", icon:"zap", title:"Duplicate prevented · ERA5 Maharashtra subset", detail:"Request satisfied from ERA5 India 2024 archive", time:"1h", user:"A. Mehta", saved:"8.4 GB"},
+    {type:"override", icon:"arrow-down", title:"Download override · Landsat 9 Pune tile", detail:"User selected different atmospheric correction requirement", time:"2h", user:"S. Jain", saved:"0 GB"},
+    {type:"indexed", icon:"plus", title:"New dataset indexed · District Groundwater Levels", detail:"Repository scan completed on Hydro Node 06", time:"3h", user:"Indexer", saved:"—"},
+    {type:"prevented", icon:"zap", title:"Duplicate prevented · IMD District Rainfall", detail:"Existing 2024 CSV reused by Environment Lab", time:"4h", user:"P. Shah", saved:"712 MB"},
+    {type:"request", icon:"arrow-up-right", title:"Access approved · High-resolution bathymetry", detail:"Owner approved research group access", time:"5h", user:"Admin", saved:"—"}
   ],
   stats: {
     prevented: 829,

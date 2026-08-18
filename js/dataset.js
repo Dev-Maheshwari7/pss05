@@ -21,11 +21,11 @@ window.addEventListener('DOMContentLoaded',()=>{
  ddas.bindDuplicateTriggers(document.getElementById('detailHero'));
  document.getElementById('copyPath').onclick=()=>{
    navigator.clipboard?.writeText(d.accessPath).catch(()=>{});
-   ddas.toast('Dataset mount path copied to clipboard ✓');
+   ddas.toast('Dataset mount path copied to clipboard');
  };
  document.getElementById('detailMetrics').innerHTML=[
    ddas.metric('Dataset Size', d.size, d.format),
-   ddas.metric('Reuse Frequency', d.reuseCount+'×', 'Avoided duplicate transfers'),
+   ddas.metric('Reuse Frequency', d.reuseCount+'x', 'Avoided duplicate transfers'),
    ddas.metric('Active Researchers', d.activeUsers, d.owner),
    ddas.metric('Replica Nodes', d.replicas, d.storageTier+' tier storage')
  ].join('');
