@@ -1,1 +1,84 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dataset — DDAS</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css"></head><body class="app-page"><div class="app-layout"><div id="appShell" data-active="Repository"></div><main class="app-main"><section class="detail-hero clay-soft" id="detailHero"></section><section class="metric-grid" id="detailMetrics"></section><section class="detail-layout"><div class="panel clay"><div class="section-head"><h2>Technical metadata</h2><span>Extracted and normalized by DDAS</span></div><div class="meta-grid" id="metadata" style="margin-top:13px"></div></div><div class="panel clay"><div class="section-head"><h2>Coverage & reuse</h2><span>Why this dataset matters</span></div><div id="coverage" class="coverage-list"></div></div></section><section class="detail-layout"><div class="panel clay"><div class="section-head"><h2>Lineage & provenance</h2><span>Auditable data history</span></div><div class="lineage" id="lineage" style="margin-top:14px"></div></div><div class="panel clay"><div class="section-head"><h2>Access history</h2><span>Owner & policy</span></div><div class="meta-grid" id="accessMeta" style="margin-top:13px;grid-template-columns:1fr 1fr"></div></div></section></main></div><script src="js/data.js"></script><script src="js/shared.js"></script><script src="js/dataset.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dataset Details — DDAS</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="app-page">
+  <div class="app-layout">
+    <div id="appShell" data-active="Repository"></div>
+
+    <main class="app-main">
+      <!-- Sticky Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb">
+            <span>DDAS</span>
+            <span class="breadcrumb-sep">/</span>
+            <a href="repository.html" style="color:var(--ink-500)">Catalog</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Dataset Details</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a class="btn ghost small" href="repository.html">← Back to Catalog</a>
+        </div>
+      </header>
+
+      <!-- Scrollable Page Content -->
+      <div class="page-content">
+        <!-- Detail Hero Card -->
+        <section class="detail-hero-card" id="detailHero"></section>
+
+        <!-- KPI Metrics Ribbon -->
+        <section class="kpi-row" id="detailMetrics"></section>
+
+        <!-- Technical Metadata & Coverage Impact -->
+        <section class="split-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Normalized Technical Metadata</h2>
+              <span>Extracted by DDAS Engine</span>
+            </div>
+            <div class="meta-fields-grid" id="metadata" style="margin-top: 12px;"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Coverage & Impact</h2>
+              <span>Reuse eligibility</span>
+            </div>
+            <div id="coverage" style="display:grid;gap:8px;margin-top:12px;"></div>
+          </div>
+        </section>
+
+        <!-- Lineage & Access Policies -->
+        <section class="split-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Lineage & Provenance</h2>
+              <span>Auditable history</span>
+            </div>
+            <div class="lineage" id="lineage" style="margin-top: 12px;"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Access Governance & Policy</h2>
+              <span>Permissions & Local Mount</span>
+            </div>
+            <div class="meta-fields-grid" id="accessMeta" style="margin-top: 12px; grid-template-columns: 1fr 1fr;"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/dataset.js"></script>
+</body>
+</html>

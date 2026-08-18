@@ -1,1 +1,74 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Activity — DDAS</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css"></head><body class="app-page"><div class="app-layout"><div id="appShell" data-active="Activity"></div><main class="app-main"><section class="page-top clay-soft"><div class="page-top-row"><div><div class="page-kicker">Audit & Operations</div><div class="page-title">Every prevented download is explainable</div><div class="page-desc">Track duplicate alerts, overrides, access requests, repository indexing and the resources they saved.</div></div><button class="btn ghost" id="exportBtn">Export audit CSV</button></div></section><section class="metric-grid" id="activityMetrics"></section><section class="panel clay"><div class="section-head"><h2>Activity stream</h2><div class="activity-filters" id="filters"><button class="activity-filter clay-soft active" data-type="all">All</button><button class="activity-filter clay-soft" data-type="prevented">Prevented</button><button class="activity-filter clay-soft" data-type="request">Access</button><button class="activity-filter clay-soft" data-type="indexed">Indexed</button><button class="activity-filter clay-soft" data-type="override">Overrides</button></div></div><div class="audit-list" id="auditList" style="margin-top:13px"></div></section></main></div><script src="js/data.js"></script><script src="js/shared.js"></script><script src="js/activity.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity & Audit — DDAS</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="app-page">
+  <div class="app-layout">
+    <div id="appShell" data-active="Audit Log"></div>
+
+    <main class="app-main">
+      <!-- Sticky Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb">
+            <span>DDAS</span>
+            <span class="breadcrumb-sep">/</span>
+            <span>Governance</span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Audit Stream</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="btn ghost small" id="exportBtn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Export Audit CSV
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Page Content -->
+      <div class="page-content">
+        <div class="page-header">
+          <div>
+            <h1>Audit & Operations Log</h1>
+            <p>Every prevented duplicate transfer, access approval, and indexing event is recorded for compliance and resource attribution.</p>
+          </div>
+          <div class="segmented-control">
+            <a class="segmented-btn" href="dashboard.html">Discover</a>
+            <a class="segmented-btn" href="repository.html">Repository</a>
+            <button class="segmented-btn active">Audit Stream</button>
+          </div>
+        </div>
+
+        <!-- Metric Ribbon -->
+        <section class="kpi-row" id="activityMetrics"></section>
+
+        <!-- Panel with Filter Tabs -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Live Operational Events</h2>
+            <div class="filter-row" id="filters">
+              <button class="filter-chip activity-filter" data-type="all">All Events</button>
+              <button class="filter-chip activity-filter" data-type="prevented">Prevented Duplicates</button>
+              <button class="filter-chip activity-filter" data-type="request">Access Requests</button>
+              <button class="filter-chip activity-filter" data-type="indexed">Newly Indexed</button>
+              <button class="filter-chip activity-filter" data-type="override">User Overrides</button>
+            </div>
+          </div>
+
+          <div class="activity-list" id="auditList" style="margin-top: 14px;"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/activity.js"></script>
+</body>
+</html>

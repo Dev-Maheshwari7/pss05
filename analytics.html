@@ -1,1 +1,119 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Analytics — DDAS</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css"></head><body class="app-page"><div class="app-layout"><div id="appShell" data-active="Analytics"></div><main class="app-main"><section class="page-top clay-soft"><div class="page-top-row"><div><div class="page-kicker">Resource Intelligence</div><div class="page-title">Measure the value of reuse</div><div class="page-desc">A management view of prevented downloads, storage savings, departmental demand and reuse behavior.</div></div><div class="role-card clay-inset"><small>Reporting period</small><b>Last 12 months</b></div></div></section><section class="metric-grid" id="analyticsMetrics"></section><section class="analytics-grid"><div class="chart-card clay"><div class="chart-head"><h3>Duplicate downloads prevented</h3><span>Monthly trend</span></div><div class="chart" id="preventedChart"></div></div><div class="chart-card clay"><div class="chart-head"><h3>Demand by department</h3><span>Share of reuse events</span></div><div class="donut-wrap"><div class="donut"></div><div class="donut-center"><b>829</b><small>prevented</small></div></div><div class="legend" id="deptLegend"></div></div></section><section class="analytics-grid"><div class="chart-card clay"><div class="chart-head"><h3>Storage avoided</h3><span>TB per month</span></div><div class="chart" id="storageChart"></div></div><div class="chart-card clay"><div class="chart-head"><h3>Top reusable datasets</h3><span>By reuse count</span></div><div class="activity-list" id="topReuse" style="margin-top:12px"></div></div></section><section class="insight-grid" id="insights"></section></main></div><script src="js/data.js"></script><script src="js/shared.js"></script><script src="js/analytics.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Intelligence & Analytics — DDAS</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="app-page">
+  <div class="app-layout">
+    <div id="appShell" data-active="Analytics"></div>
+
+    <main class="app-main">
+      <!-- Sticky Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb">
+            <span>DDAS</span>
+            <span class="breadcrumb-sep">/</span>
+            <span>Reports</span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Resource Intelligence</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <span class="tag" style="font-size:11px">Rolling 12 Months</span>
+        </div>
+      </header>
+
+      <!-- Scrollable Page Content -->
+      <div class="page-content">
+        <div class="page-header">
+          <div>
+            <h1>Resource Intelligence</h1>
+            <p>Measure avoided bandwidth, saved storage capacity, reuse velocity, and departmental demand.</p>
+          </div>
+          <div class="segmented-control">
+            <a class="segmented-btn" href="dashboard.html">Discover</a>
+            <a class="segmented-btn" href="repository.html">Repository</a>
+            <button class="segmented-btn active">Analytics</button>
+          </div>
+        </div>
+
+        <!-- Metric Ribbon -->
+        <section class="kpi-row" id="analyticsMetrics"></section>
+
+        <!-- Charts Row 1: Monthly Prevented & Department Demand -->
+        <section class="analytics-row">
+          <div class="chart-card">
+            <div class="panel-header" style="margin-bottom:0;padding-bottom:8px">
+              <div>
+                <h2>Duplicate Downloads Prevented</h2>
+                <span style="font-size:11.5px;color:var(--ink-400)">Monthly cumulative trend</span>
+              </div>
+              <span class="tag green">+14.8% MOM</span>
+            </div>
+            <div class="chart-container" id="preventedChart"></div>
+          </div>
+
+          <div class="chart-card">
+            <div class="panel-header" style="margin-bottom:0;padding-bottom:8px">
+              <div>
+                <h2>Departmental Reuse Share</h2>
+                <span style="font-size:11.5px;color:var(--ink-400)">Demand distribution</span>
+              </div>
+              <span class="tag blue">5 Divisions</span>
+            </div>
+            <div class="donut-wrap">
+              <div class="donut"></div>
+              <div class="donut-center">
+                <b>829</b>
+                <small>Prevented</small>
+              </div>
+            </div>
+            <div class="legend-grid" id="deptLegend"></div>
+          </div>
+        </section>
+
+        <!-- Charts Row 2: Storage Avoided & Top Reused Datasets -->
+        <section class="analytics-row">
+          <div class="chart-card">
+            <div class="panel-header" style="margin-bottom:0;padding-bottom:8px">
+              <div>
+                <h2>Storage Capacity Avoided</h2>
+                <span style="font-size:11.5px;color:var(--ink-400)">Terabytes (TB) saved per month</span>
+              </div>
+              <span class="tag green">4.31 TB Total</span>
+            </div>
+            <div class="chart-container" id="storageChart"></div>
+          </div>
+
+          <div class="chart-card">
+            <div class="panel-header" style="margin-bottom:0;padding-bottom:8px">
+              <div>
+                <h2>Top Reused Datasets</h2>
+                <span style="font-size:11.5px;color:var(--ink-400)">Ranked by reuse count</span>
+              </div>
+              <span class="tag">Leaderboard</span>
+            </div>
+            <div class="activity-list" id="topReuse" style="margin-top: 10px;"></div>
+          </div>
+        </section>
+
+        <!-- Row 3: Strategic Insights Grid -->
+        <div class="panel-header" style="margin-top: 4px;">
+          <h2>Strategic Insights & Observations</h2>
+          <span>Autonomous Observability Engine</span>
+        </div>
+        <section class="insights-grid" id="insights"></section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

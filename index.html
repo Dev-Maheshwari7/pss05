@@ -1,40 +1,208 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DDAS — Data Download Duplication Alert System</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css?v=overlap-fix-2">
-<style>
-/* Landing hero overlap fix only. Kept inline so stale cached CSS cannot reintroduce the old absolute layout. */
-.hero-visual{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-  grid-template-areas:
-    "saved signal"
-    "workflow workflow"
-    ". coverage"!important;
-  grid-template-rows:max-content max-content max-content!important;
-  column-gap:18px!important;
-  row-gap:22px!important;
-  align-items:start!important;
-  align-content:start!important;
-  height:auto!important;
-  min-height:470px!important;
-}
-.hero-visual .float-card,
-.hero-visual .visual-main{
-  position:relative!important;
-  left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
-  transform:none!important;
-  margin:0!important;
-}
-.hero-visual .float-b{grid-area:saved!important;justify-self:start!important;width:205px!important;max-width:100%!important;}
-.hero-visual .float-a{grid-area:signal!important;justify-self:end!important;width:175px!important;max-width:100%!important;}
-.hero-visual .visual-main{grid-area:workflow!important;justify-self:center!important;width:calc(100% - 32px)!important;z-index:1!important;}
-.hero-visual .float-c{grid-area:coverage!important;justify-self:end!important;width:190px!important;max-width:100%!important;}
-@media(max-width:720px){
-  .hero-visual{grid-template-columns:1fr!important;grid-template-areas:"signal" "workflow" "coverage"!important;}
-  .hero-visual .float-a,.hero-visual .float-c{justify-self:center!important;}
-}
-</style></head><body>
-<div class="container public-nav-wrap"><nav class="public-nav clay"><a class="brand" href="index.html"><img class="brand-logo" src="assets/logo.svg"><div><b>DDAS</b><small>Data Download Duplication Alert System</small></div></a><div class="public-links"><a href="#features">Features</a><a href="#workflow">How it works</a><a href="analytics.html">Impact</a><a class="btn primary small" href="dashboard.html">Open demo</a></div></nav></div>
-<section class="hero"><div class="container hero-grid"><div class="hero-card clay"><span class="eyebrow clay-soft">✨ Institute-wide dataset discovery before download</span><h1>Stop duplicate downloads before they happen.</h1><p>DDAS checks institute repositories, user-owned datasets, file fingerprints, temporal coverage, spatial overlap and access rules before a fresh transfer starts. If the required data already exists, users are routed to the existing copy.</p><div class="hero-actions"><a class="btn primary" href="dashboard.html">Try interactive demo</a><a class="btn ghost" href="#features">Explore features</a></div><div class="mini-metrics"><div class="mini-metric clay-soft"><span>Duplicate downloads prevented</span><strong>829</strong></div><div class="mini-metric clay-soft"><span>Storage saved</span><strong>4.31 TB</strong></div><div class="mini-metric clay-soft"><span>Repositories indexed</span><strong>16</strong></div></div></div><div class="hero-visual clay"><div class="float-card float-a clay-soft"><span class="muted" style="font-size:10px">Live DDAS signal</span><b style="display:block;font-size:20px;margin-top:4px">98.7% match</b><span class="green-text" style="font-size:10px">Duplicate likely found</span></div><div class="float-card float-b clay-soft"><b style="font-size:12px">Saved by DDAS</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px"><div class="clay-inset" style="padding:10px;border-radius:13px"><small class="muted">Bandwidth</small><b style="display:block">3.74 TB</b></div><div class="clay-inset" style="padding:10px;border-radius:13px"><small class="muted">Reuse</small><b style="display:block">143×</b></div></div></div><div class="float-card float-c clay-soft"><b style="font-size:12px">Coverage insight</b><p class="muted" style="font-size:10px;line-height:1.4;margin:6px 0 0">Requested Maharashtra rainfall data is fully covered by an existing India dataset.</p></div><div class="visual-main clay-soft"><small class="muted">Core workflow</small><div class="flow"><div class="flow-step clay-inset">Search dataset</div><div class="flow-arrow">→</div><div class="flow-step clay-inset">DDAS checks metadata</div><div class="flow-arrow">→</div><div class="flow-step clay-inset">Reuse existing copy</div></div><div class="clay-inset" style="margin-top:15px;padding:13px;border-radius:16px"><small class="muted">Example match</small><b style="display:block;font-size:11px;margin-top:5px">“Maharashtra Rainfall 2024” → ERA5 India Hourly Rainfall — 2024</b></div></div></div></div></section>
-<section class="section" id="features"><div class="container"><div class="section-title"><h2>More than a duplicate file finder</h2><p>DDAS determines whether an existing organizational dataset can satisfy a new request using identity, metadata, temporal, spatial and semantic signals.</p></div><div class="feature-grid"><div class="feature clay"><div class="feature-icon a">🔎</div><h3>Smart duplicate detection</h3><p>Combines checksums, unique dataset IDs, source history, metadata and similarity signals.</p></div><div class="feature clay"><div class="feature-icon b">🧠</div><h3>Metadata intelligence</h3><p>Period, region, variables, resolution, owner, location, permissions, lineage and integrity.</p></div><div class="feature clay"><div class="feature-icon c">⚡</div><h3>Instant reuse</h3><p>Open the existing copy, mount it to a workspace or request owner access instead of downloading again.</p></div><div class="feature clay"><div class="feature-icon d">📦</div><h3>Repository visibility</h3><p>Indexes central servers, lab repositories and user-owned research datasets in a common catalog.</p></div><div class="feature clay"><div class="feature-icon a">🛰️</div><h3>Scientific data aware</h3><p>Designed to demonstrate climate, geospatial, satellite and ocean datasets with rich spatial-temporal metadata.</p></div><div class="feature clay"><div class="feature-icon b">📊</div><h3>Resource analytics</h3><p>Quantifies prevented downloads, bandwidth saved, storage avoided, reuse rate and departmental impact.</p></div></div></div></section>
-<section class="section" id="workflow"><div class="container"><div class="section-title"><h2>How the demo works</h2><p>Use the product exactly like a researcher would.</p></div><div class="steps"><div class="step-card clay"><div class="step-number clay-soft">1</div><h3>Search</h3><p>Search for a dataset by topic, region, source or period.</p></div><div class="step-card clay"><div class="step-number clay-soft">2</div><h3>Compare</h3><p>DDAS compares requested data against the institute catalog.</p></div><div class="step-card clay"><div class="step-number clay-soft">3</div><h3>Alert</h3><p>A detailed duplicate alert explains why an existing dataset matches.</p></div><div class="step-card clay"><div class="step-number clay-soft">4</div><h3>Reuse</h3><p>Use the existing location, request access or override the warning.</p></div></div></div></section>
-<section class="section"><div class="container"><div class="cta clay"><h2>See the full DDAS prototype</h2><p>The demo includes dataset discovery, institute repository browsing, duplicate alerts, dataset detail pages, audit history and resource analytics.</p><a class="btn primary" href="dashboard.html">Launch DDAS demo</a></div></div></section><footer class="footer">DDAS · Hackathon prototype · Light claymorphism interface</footer>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDAS — Data Download Duplication Alert System</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <div class="public-nav-wrap">
+    <div class="container">
+      <nav class="public-nav">
+        <a class="brand" href="index.html">
+          <div class="brand-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <div>
+            <b>DDAS</b>
+            <small>Data Download Duplication Alert System</small>
+          </div>
+        </a>
+        <div class="public-links">
+          <a href="#features">Features</a>
+          <a href="#workflow">How It Works</a>
+          <a href="analytics.html">Impact & Analytics</a>
+          <a class="btn ghost small" href="dashboard.html">
+            <span>Launch Demo</span>
+            <span style="color:var(--accent-orange);font-weight:700">→</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Section (Editorial Minimalist Style) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div>
+          <span class="eyebrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            INSTITUTE DATA INTELLIGENCE LAYER
+          </span>
+          <h1>Stop duplicate <span class="highlight">downloads</span> before they happen.</h1>
+          <p>DDAS intercepts redundant external transfers by checking institute cluster repositories, file fingerprints, temporal extents, spatial bounds, and access policies in real time.</p>
+          
+          <!-- Dual CTA Buttons (Matching Image 1 Reference) -->
+          <div class="hero-actions">
+            <a class="btn-arrow-wrap" href="dashboard.html">
+              <span class="btn primary">Launch Interactive Demo</span>
+              <span class="btn-arrow-circle">↗</span>
+            </a>
+            <a class="btn ghost" href="#features">Explore Features</a>
+          </div>
+        </div>
+
+        <div class="mini-metrics">
+          <div class="mini-metric">
+            <span>Duplicate Transfers Prevented</span>
+            <strong>829</strong>
+          </div>
+          <div class="mini-metric">
+            <span>Storage Capacity Saved</span>
+            <strong>4.31 TB</strong>
+          </div>
+          <div class="mini-metric">
+            <span>Repositories Indexed</span>
+            <strong>16 Nodes</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="float-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="muted" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px">Realtime Interception</span>
+            <span class="tag green" style="font-size:10px">VERIFIED</span>
+          </div>
+          <b style="display:block;font-size:24px;font-weight:700;color:var(--ink-primary);margin-top:6px;font-family:'JetBrains Mono',monospace;">98.7% Match</b>
+          <span class="green-text" style="font-size:11.5px;display:flex;align-items:center;gap:5px;margin-top:2px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Existing copy found in Node 03 (Hot Tier)
+          </span>
+        </div>
+
+        <div class="visual-main">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <small class="muted" style="font-weight:600;text-transform:uppercase;font-size:10px;letter-spacing:0.5px">Automated Routing Flow</small>
+            <span class="tag blue" style="font-size:10px">DIRECT MOUNT</span>
+          </div>
+          <div class="flow">
+            <div class="flow-step">Search / Request</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">DDAS Fingerprint</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Local Replica</div>
+          </div>
+          <div class="clay-inset" style="margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg-surface)">
+            <small class="muted" style="font-size:10px;font-weight:600;text-transform:uppercase">Matched Dataset Sample</small>
+            <b style="display:block;font-size:12px;margin-top:2px;color:var(--ink-primary)">“Maharashtra Rainfall 2024” → ERA5 India Hourly Archive</b>
+          </div>
+        </div>
+
+        <div class="float-card">
+          <b style="font-size:11px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.5px;">Spatial & Temporal Coverage</b>
+          <p class="muted" style="font-size:12px;line-height:1.5;margin:4px 0 0;color:var(--ink-primary)">Requested Maharashtra rainfall domain is 100% satisfied by the existing institute dataset.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>More than a duplicate file finder</h2>
+        <p>DDAS determines whether an existing organizational dataset satisfies a new request using identity, metadata, temporal, spatial and semantic signals.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🔎</div>
+          <h3>Smart Duplicate Detection</h3>
+          <p>Combines checksums, unique dataset IDs, source history, metadata schemas and similarity signals.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <h3>Metadata Intelligence</h3>
+          <p>Period, region, variables, resolution, owner, location, permissions, lineage and integrity.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Reuse & Mounting</h3>
+          <p>Open the existing copy, mount it directly to a workspace or request owner access instead of transferring again.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📦</div>
+          <h3>Repository Visibility</h3>
+          <p>Indexes central clusters, lab servers, and user-owned research datasets into a unified catalog.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛰️</div>
+          <h3>Scientific Data Aware</h3>
+          <p>Engineered for climate, geospatial, satellite imagery and ocean datasets with spatial-temporal metadata.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Resource Analytics</h3>
+          <p>Quantifies prevented downloads, bandwidth saved, storage avoided, reuse rate and departmental impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Steps -->
+  <section class="section" id="workflow" style="background:#ffffff;border-top:1px solid var(--border-line);border-bottom:1px solid var(--border-line)">
+    <div class="container">
+      <div class="section-title">
+        <h2>How DDAS Operates</h2>
+        <p>A transparent, high-speed interception workflow for researchers and lab data engineers.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Search or Request</h3>
+          <p>Search for a dataset by topic, region, source, variable or temporal period.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Deep Meta Comparison</h3>
+          <p>DDAS compares requested data against the institute catalog across 16 registered nodes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Intelligent Duplicate Alert</h3>
+          <p>A detailed alert explains why and how an existing dataset satisfies the requirement.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Direct Reuse</h3>
+          <p>Mount the existing location, request access or override the warning if necessary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Experience the Full DDAS Prototype</h2>
+        <p>The interactive demo includes dataset discovery, institute repository browsing, duplicate alerts, dataset detail pages, audit history and resource analytics.</p>
+        <a class="btn primary" href="dashboard.html">
+          <span>Launch Interactive Demo</span>
+          <span style="color:var(--accent-orange);font-weight:700">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    DDAS · Data Download Duplication Alert System · Modern Minimalist Architecture
+  </footer>
+</body>
+</html>

@@ -1,1 +1,100 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Repository — DDAS</title><link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="css/styles.css"></head><body class="app-page"><div class="app-layout"><div id="appShell" data-active="Repository"></div><main class="app-main"><section class="page-top clay-soft"><div class="page-top-row"><div><div class="page-kicker">Institute Repository</div><div class="page-title">Browse everything DDAS knows about</div><div class="page-desc">A common catalog across lab servers, shared storage and research-owned datasets.</div></div><a class="btn primary" href="dashboard.html">+ Check a new download</a></div></section><section class="metric-grid" id="repoMetrics"></section><section class="toolbar clay-inset"><input id="repoSearch" placeholder="Search title, provider, region, variable…"><select id="typeFilter"><option value="">All domains</option><option>Climate</option><option>Remote Sensing</option><option>Oceanography</option><option>Demography</option></select><select id="accessFilter"><option value="">All access</option><option>Institute-wide</option><option>Lab owned</option><option>Approval required</option><option>Public institute</option></select></section><section class="repo-table clay"><div style="padding:16px 16px 4px" class="section-head"><h2>Indexed datasets</h2><span id="repoCount"></span></div><div style="padding:0 12px 12px;overflow:auto"><table><thead><tr><th>Dataset</th><th>Domain</th><th>Period</th><th>Size</th><th>Location</th><th>Owner</th><th>Access</th><th>Reuse</th><th></th></tr></thead><tbody id="repoBody"></tbody></table></div></section></main></div><script src="js/data.js"></script><script src="js/shared.js"></script><script src="js/repository.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institute Repository — DDAS</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="app-page">
+  <div class="app-layout">
+    <div id="appShell" data-active="Repository"></div>
+
+    <main class="app-main">
+      <!-- Sticky Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb">
+            <span>DDAS</span>
+            <span class="breadcrumb-sep">/</span>
+            <span>Catalog</span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Indexed Repositories</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a class="btn primary small" href="dashboard.html">+ New Search</a>
+        </div>
+      </header>
+
+      <!-- Scrollable Page Content -->
+      <div class="page-content">
+        <div class="page-header">
+          <div>
+            <h1>Institute Repository</h1>
+            <p>Unified catalog indexing climate models, satellite tiles, ocean datasets, and research archives.</p>
+          </div>
+          <div class="segmented-control">
+            <a class="segmented-btn" href="dashboard.html">Discovery View</a>
+            <button class="segmented-btn active">Table View</button>
+            <a class="segmented-btn" href="analytics.html">Analytics</a>
+          </div>
+        </div>
+
+        <!-- Metric Ribbon -->
+        <section class="kpi-row" id="repoMetrics"></section>
+
+        <!-- Table Card with Toolbar -->
+        <div class="table-card">
+          <div class="table-toolbar">
+            <input id="repoSearch" placeholder="Search by title, provider, region, variable…">
+            <select id="typeFilter">
+              <option value="">All scientific domains</option>
+              <option>Climate</option>
+              <option>Remote Sensing</option>
+              <option>Oceanography</option>
+              <option>Demography</option>
+            </select>
+            <select id="accessFilter">
+              <option value="">All access policies</option>
+              <option>Institute-wide</option>
+              <option>Lab owned</option>
+              <option>Approval required</option>
+              <option>Public institute</option>
+            </select>
+          </div>
+
+          <div style="padding: 10px 16px; background: #ffffff; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size:12px;font-weight:600;color:var(--ink-700)">Indexed Datasets</span>
+            <span id="repoCount" class="tag" style="font-size:11px"></span>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Dataset Name</th>
+                  <th>Domain</th>
+                  <th>Period</th>
+                  <th>Size</th>
+                  <th>Storage Node</th>
+                  <th>Data Owner</th>
+                  <th>Access Policy</th>
+                  <th>Reuse Count</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="repoBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/repository.js"></script>
+</body>
+</html>

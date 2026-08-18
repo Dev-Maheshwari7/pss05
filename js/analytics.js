@@ -1,9 +1,52 @@
 window.addEventListener('DOMContentLoaded',()=>{
- const D=DDAS_DATA,S=D.stats, months=['Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'];
- document.getElementById('analyticsMetrics').innerHTML=[ddas.metric('Downloads prevented',S.prevented,'↑ 14.8% this month'),ddas.metric('Storage saved',S.storageTB+' TB','Equivalent capacity avoided'),ddas.metric('Bandwidth saved',S.bandwidthTB+' TB','Across external transfers'),ddas.metric('Reuse rate',S.reuseRate+'%','Requests satisfied internally')].join('');
- function bars(id,values,scale){const max=Math.max(...values);document.getElementById(id).innerHTML=values.map((v,i)=>`<div class="chart-col"><div class="chart-bar" title="${v}" style="height:${Math.max(7,v/max*190)}px"></div><label>${months[i]}</label></div>`).join('')}
- bars('preventedChart',S.monthlyPrevented);bars('storageChart',S.monthlyStorage);
- const colors=['#ff8e72','#8ed8c9','#9fd4ff','#cbb9ff','#f6d07a'];document.getElementById('deptLegend').innerHTML=S.departments.map((d,i)=>`<div class="legend-item"><span class="legend-dot" style="background:${colors[i]}"></span>${d.name} · ${d.value}%</div>`).join('');
- document.getElementById('topReuse').innerHTML=[...D.datasets].sort((a,b)=>b.reuseCount-a.reuseCount).slice(0,5).map((d,i)=>`<div class="activity-item"><div class="activity-icon clay-inset">${i+1}</div><div><b>${d.title}</b><p>${d.owner}</p></div><time>${d.reuseCount}×</time></div>`).join('');
- document.getElementById('insights').innerHTML=[['Biggest opportunity','Remote sensing','High file sizes make duplicate prevention disproportionately valuable.'],['Most reused','IMD rainfall','District rainfall aggregates are reused 219 times in the demo catalog.'],['Fastest growth','Climate analytics','Monthly prevented downloads increased strongly in the latest period.'],['Catalog coverage','16 repositories','A shared metadata layer gives users visibility without centralizing every byte.'],['Policy signal','3.8% overrides','Overrides remain allowed and auditable for legitimate scientific reasons.'],['Estimated time saved','1,120 hours','Illustrative research time avoided by discovering existing data first.']].map(x=>`<div class="insight clay"><small>${x[0]}</small><b>${x[1]}</b><p>${x[2]}</p></div>`).join('');
+ const D=DDAS_DATA, S=D.stats, months=['Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'];
+ document.getElementById('analyticsMetrics').innerHTML=[
+   ddas.metric('Downloads Prevented', S.prevented, '↑ 14.8% vs prior period'),
+   ddas.metric('Storage Saved', S.storageTB+' TB', 'Equivalent capacity avoided'),
+   ddas.metric('Bandwidth Saved', S.bandwidthTB+' TB', 'Across external transfers'),
+   ddas.metric('Reuse Rate', S.reuseRate+'%', 'Satisfied internally without fetch')
+ ].join('');
+
+ function bars(id, values){
+   const max = Math.max(...values);
+   document.getElementById(id).innerHTML = values.map((v, i) => 
+     `<div class="chart-bar-col">
+       <div class="chart-bar-fill" title="${v}" style="height:${Math.max(6, v/max*160)}px"></div>
+       <label>${months[i]}</label>
+     </div>`
+   ).join('');
+ }
+ bars('preventedChart', S.monthlyPrevented);
+ bars('storageChart', S.monthlyStorage);
+
+ const colors = ['#0f172a','#10b981','#2563eb','#8b5cf6','#f97316'];
+ document.getElementById('deptLegend').innerHTML = S.departments.map((d, i) => 
+   `<div class="legend-item"><span class="legend-dot" style="background:${colors[i]}"></span>${d.name} · ${d.value}%</div>`
+ ).join('');
+
+ document.getElementById('topReuse').innerHTML = [...D.datasets].sort((a,b) => b.reuseCount - a.reuseCount).slice(0, 4).map((d, i) => 
+   `<div class="activity-item">
+     <div class="activity-icon" style="font-weight:700;font-size:11px">${i+1}</div>
+     <div>
+       <b>${d.title}</b>
+       <p>${d.owner}</p>
+     </div>
+     <time style="font-weight:700;color:var(--brand-green)">${d.reuseCount}×</time>
+   </div>`
+ ).join('');
+
+ document.getElementById('insights').innerHTML = [
+   ['Storage Yield','Remote Sensing','Large SAR & optical tiles make duplicate prevention disproportionately valuable.'],
+   ['Most Reused','IMD Rainfall','District rainfall aggregates have 219 logged reuse events across 4 departments.'],
+   ['Highest Velocity','Climate Analytics','Monthly prevented downloads accelerated significantly in the latest quarter.'],
+   ['Cluster Reach','16 Repositories','A federated metadata index provides discovery without moving raw petabytes.'],
+   ['Policy Health','3.8% Overrides','Overrides remain transparently logged and auditable for scientific edge cases.'],
+   ['Preserved Bandwidth','1,120 Hours','Estimated transfer and processing wait-time preserved across institute teams.']
+ ].map(x => 
+   `<div class="insight-tile">
+     <small>${x[0]}</small>
+     <b>${x[1]}</b>
+     <p>${x[2]}</p>
+   </div>`
+ ).join('');
 });
